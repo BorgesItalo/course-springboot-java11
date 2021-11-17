@@ -1,7 +1,9 @@
 package com.educandoweb.course.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,6 +20,9 @@ public class Category implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
 	private String name;
+	
+	
+	private Set<Product> products = new HashSet<>();
 	public Category() {
 		super();
 	}
@@ -38,6 +43,9 @@ public class Category implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
+	public Set<Product> getProducts() {
+		return products;
+	}
 	@Override
 	public int hashCode() {
 		return Objects.hash(Id);
@@ -53,6 +61,8 @@ public class Category implements Serializable{
 		Category other = (Category) obj;
 		return Objects.equals(Id, other.Id);
 	}
+	
+	
 	
 	
 	
